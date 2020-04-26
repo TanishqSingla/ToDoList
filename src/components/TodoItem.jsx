@@ -12,7 +12,7 @@ const TodoItem = (props) => {
     <div onClick={handleClick}>
       <li style={{ textDecoration: isDone ? "line-through" : "none" }}>
         {props.item} &nbsp;
-        <span onClick={() => props.deleteItem(props.key)}>
+        <span onClick={() => props.deleteItem(props.id)}>
           <i className="fa fa-trash"></i>
         </span>
       </li>

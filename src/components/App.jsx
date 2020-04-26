@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import TodoItem from "./TodoItem";
+import { v4 as uuidv4 } from "uuid";
 
 function App() {
   const [inputText, setInputValue] = useState("");
@@ -16,11 +17,9 @@ function App() {
 
   const deleteItem = (id) => {
     setItems((prevItems) => {
-      return prevItems.filter((item) => item.id !== id);
+      return prevItems.filter((item, index) => index !== id);
     });
   };
-
-  const id = Math.random(36).toString().slice(2);
 
   return (
     <div className="container">
@@ -35,8 +34,13 @@ function App() {
       </div>
       <div>
         <ul>
-          {items.map((todoItem) => (
-            <TodoItem key={id} item={todoItem} deleteItem={deleteItem} />
+          {items.map((todoItem, index) => (
+            <TodoItem
+              key={index}
+              id={index}
+              item={todoItem}
+              deleteItem={deleteItem}
+            />
           ))}
         </ul>
       </div>
