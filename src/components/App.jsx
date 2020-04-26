@@ -14,6 +14,8 @@ function App() {
     setItems((prevItems) => [...prevItems, inputText]);
   };
 
+  const deleteItem = () => {};
+
   return (
     <div className="container">
       <div className="heading">

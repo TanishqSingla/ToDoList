@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./TodoItem.css";
 
 const TodoItem = (props) => {
   const [isDone, setIsDone] = useState(false);
@@ -10,7 +11,10 @@ const TodoItem = (props) => {
   return (
     <div onClick={handleClick}>
       <li style={{ textDecoration: isDone ? "line-through" : "none" }}>
-        {props.item}
+        {props.item} &nbsp;
+        <span onClick={props.deleteItem}>
+          <i className="fa fa-trash"></i>
+        </span>
       </li>
     </div>
   );
