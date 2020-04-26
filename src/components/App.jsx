@@ -2,10 +2,15 @@ import React, { useState } from "react";
 
 function App() {
   const [inputText, setInputValue] = useState("");
+  const [items, setItems] = useState([]);
 
   const handleChange = (event) => {
     const value = event.target.value;
     setInputValue(value);
+  };
+
+  const addItem = () => {
+    setItems((prevItems) => [...prevItems, inputText]);
   };
 
   return (
@@ -15,13 +20,15 @@ function App() {
       </div>
       <div className="form">
         <input type="text" value={inputText} onChange={handleChange} />
-        <button>
+        <button onClick={addItem}>
           <span>Add</span>
         </button>
       </div>
       <div>
         <ul>
-          <li>A Item </li>
+          {items.map((todoItem) => {
+            return <li>{todoItem}</li>;
+          })}
         </ul>
       </div>
     </div>
