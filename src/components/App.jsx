@@ -14,7 +14,13 @@ function App() {
     setItems((prevItems) => [...prevItems, inputText]);
   };
 
-  const deleteItem = () => {};
+  const deleteItem = (id) => {
+    setItems((prevItems) => {
+      return prevItems.filter((item) => item.id !== id);
+    });
+  };
+
+  const id = Math.random(36).toString().slice(2);
 
   return (
     <div className="container">
@@ -30,7 +36,7 @@ function App() {
       <div>
         <ul>
           {items.map((todoItem) => (
-            <TodoItem item={todoItem} />
+            <TodoItem key={id} item={todoItem} deleteItem={deleteItem} />
           ))}
         </ul>
       </div>
