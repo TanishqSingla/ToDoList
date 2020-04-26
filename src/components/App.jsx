@@ -1,17 +1,11 @@
 import React, { useState } from "react";
 import TodoItem from "./TodoItem";
-import { v4 as uuidv4 } from "uuid";
+import InputForm from "./InputForm";
 
 function App() {
-  const [inputText, setInputValue] = useState("");
   const [items, setItems] = useState([]);
 
-  const handleChange = (event) => {
-    const value = event.target.value;
-    setInputValue(value);
-  };
-
-  const addItem = () => {
+  const addItem = (inputText) => {
     setItems((prevItems) => [...prevItems, inputText]);
   };
 
@@ -26,13 +20,8 @@ function App() {
       <div className="heading">
         <h1>To-Do List</h1>
       </div>
-      <div className="form">
-        <input type="text" value={inputText} onChange={handleChange} />
-        <button onClick={addItem}>
-          <span>Add</span>
-        </button>
-      </div>
       <div>
+        <InputForm onAdd={addItem} />
         <ul>
           {items.map((todoItem, index) => (
             <TodoItem
